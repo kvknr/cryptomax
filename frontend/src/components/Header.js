@@ -17,7 +17,7 @@ import {
   const useStyles = makeStyles((theme) => ({
     title: {
       flex: 1,
-      color: "gold",
+      color: "#ffffff",
       fontFamily: "Montserrat",
       fontWeight: "bold",
       cursor: "pointer",

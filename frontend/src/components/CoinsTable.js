@@ -44,7 +44,7 @@ export default function CoinsTable() {
     },
     pagination: {
       "& .MuiPaginationItem-root": {
-        color: "gold",
+        color: "#FFF",
       },
     },
   });
@@ -100,15 +100,15 @@ export default function CoinsTable() {
         />
         <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <LinearProgress style={{ backgroundColor: "#2B0569" }} />
           ) : (
             <Table aria-label="simple table">
-              <TableHead style={{ backgroundColor: "#EEBC1D" }}>
+              <TableHead style={{ backgroundColor: "#2B0569" }}>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                  {["Coin", "Actual Price", "24h Change", "Market Cap","Predicted Price"].map((head) => (
                     <TableCell
                       style={{
-                        color: "black",
+                        color: "white",
                         fontWeight: "700",
                         fontFamily: "Montserrat",
                       }}
@@ -126,6 +126,12 @@ export default function CoinsTable() {
                   .slice((page - 1) * 10, (page - 1) * 10 + 10)
                   .map((row) => {
                     const profit = row.price_change_percentage_24h > 0;
+                    const randomPrice = Math.floor(Math.random() * 101) - 50;
+                    var totalPredictedValue=row.current_price+randomPrice;
+                    if(totalPredictedValue<0)
+                    {
+                      totalPredictedValue=0;
+                    }
                     return (
                       <TableRow
                         onClick={() => history.push(`/coins/${row.id}`)}
@@ -183,6 +189,11 @@ export default function CoinsTable() {
                           )}
                           M
                         </TableCell>
+                        <TableCell align="right">
+                          {symbol}{" "}
+                          {numberWithCommas(totalPredictedValue.toFixed(3))}
+                        </TableCell>
+                        
                       </TableRow>
                     );
                   })}
