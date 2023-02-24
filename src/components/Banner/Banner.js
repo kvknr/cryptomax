@@ -41,7 +41,7 @@ function Banner() {
               fontFamily: "Montserrat",
             }}
           >
-            CryptoMax
+            Crypto Hunter
           </Typography>
           <Typography
             variant="subtitle2"
@@ -51,7 +51,7 @@ function Banner() {
               fontFamily: "Montserrat",
             }}
           >
-            Find Out All About Your Favorite Cryptocurrency
+            Get all the Info regarding your favorite Crypto Currency
           </Typography>
         </div>
         <Carousel />
